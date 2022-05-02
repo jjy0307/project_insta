@@ -9,6 +9,11 @@
     <link rel="shortcut icon" href="/static/icons/logo.png">
     <link rel="stylesheet" type="text/css" href="/static/styles/styles.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
 </head>
 <body>
 <div class="container">
@@ -61,14 +66,94 @@
             <div class="feed-container white-box">
                 <div class="feed">
                     <div class="title">
-                        <div class="avatar-wrapper">
-                            <div class="avatar avatar-image"></div>
+                        <div class="profile_photo">
+                            <div>
+                                <img src="https://cdn.discordapp.com/attachments/595518052796465153/970288703006199818/pipe001.png">
+                            </div>
                             <p class="bold">j_j__y</p>
                         </div>
-                        <a href="">
-                            <img class="icon" src="/static/icons/more.png"/>
-                        </a>
+                        <img id="popup_open_btn" class="icon" style="margin-right: 10px" src="/static/icons/more.png"/>
+                        <div id="my_modal">
+                            <div class=>
+                                <p>
+                                    <button class="in_modal">신고</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">팔로우 취소</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">게시물로 이동</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">공유 대상...</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">링크 복사</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">퍼가기</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal modal_close_btn">취소</button>
+                                </p>
+                            </div>
+                        </div>
+                        <script>
+                            function modal(id) {
+                                var zIndex = 9999;
+                                var modal = document.getElementById(id);
+                                var bg = document.createElement('div');
+                                bg.setStyle({
+                                    position: 'fixed',
+                                    zIndex: zIndex,
+                                    left: '0px',
+                                    top: '0px',
+                                    width: '100%',
+                                    height: '100%',
+                                    overflow: 'auto',
+                                    backgroundColor: 'rgba(0,0,0,0.4)'
+                                });
+                                document.body.append(bg);
+                                modal.querySelector('.modal_close_btn').addEventListener('click', function () {
+                                    bg.remove();
+                                    modal.style.display = 'none';
+                                });
+
+                                modal.setStyle({
+                                    position: 'fixed',
+                                    display: 'block',
+                                    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+
+
+                                    zIndex: zIndex + 1,
+
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    msTransform: 'translate(-50%, -50%)',
+                                    webkitTransform: 'translate(-50%, -50%)'
+                                });
+                            }
+
+
+                            Element.prototype.setStyle = function (styles) {
+                                for (var k in styles) this.style[k] = styles[k];
+                                return this;
+                            };
+
+                            document.getElementById('popup_open_btn').addEventListener('click', function () {
+
+                                modal('my_modal');
+                            });
+                        </script>
                     </div>
+                    <hr>
                     <div class="photo"
                          style="background-image: url('https://cdn.discordapp.com/attachments/595518052796465153/970288703006199818/pipe001.png');"></div>
                 </div>
@@ -79,7 +164,7 @@
                         <img class="icon" src="/static/icons/plane.png"/>
                     </div>
                     <div>
-                        <img class="icon" src="/static/icons/save.png"/>
+                        <img class="icon" style="margin-right: 20px" src="/static/icons/save.png"/>
                     </div>
                 </div>
                 <div class="comments">
@@ -87,14 +172,281 @@
                         <div class="small-avatar avatar-image"></div>
                         <p><span class="bold">A</span>님 외 <span class="bold">10명</span>이 좋아합니다</p>
                     </div>
-                    <div><span class="bold">j_j__y</span> ㅎㅇ</div>
+                    <div><span class="bold">j_j__y</span> ㅎㅇ<input
+                            value="더보기"
+                            onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '숨기기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '더보기';}"
+                            type="button"
+                            class="card_view_more"
+                    />
+                        <div style="display: none" class="card_view">ㅎㅇ</div>
+                    </div>
+
                     <p class="thin">1분전</p>
+
+                    <div class="feedCommentContainer">
+                        <img class="icon feed-emo" src="/static/icons/emo.png"/>
+                        <input class="feedComment" type="text" placeholder="댓글 달기...">
+                        <div class="follow thin blue-text">
+                            <span>게시</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feed-container white-box">
+                <div class="feed">
+                    <div class="title">
+                        <div class="profile_photo">
+                            <div>
+                                <img src="https://cdn.discordapp.com/attachments/595518052796465153/970288703006199818/pipe001.png">
+                            </div>
+                            <p class="bold">j_j__y</p>
+                        </div>
+                        <img id="popup_open_btn" class="icon" style="margin-right: 10px" src="/static/icons/more.png"/>
+                        <div id="my_modal">
+                            <div class=>
+                                <p>
+                                    <button class="in_modal">신고</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">팔로우 취소</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">게시물로 이동</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">공유 대상...</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">링크 복사</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">퍼가기</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal modal_close_btn">취소</button>
+                                </p>
+                            </div>
+                        </div>
+                        <script>
+                            function modal(id) {
+                                var zIndex = 9999;
+                                var modal = document.getElementById(id);
+                                var bg = document.createElement('div');
+                                bg.setStyle({
+                                    position: 'fixed',
+                                    zIndex: zIndex,
+                                    left: '0px',
+                                    top: '0px',
+                                    width: '100%',
+                                    height: '100%',
+                                    overflow: 'auto',
+                                    backgroundColor: 'rgba(0,0,0,0.4)'
+                                });
+                                document.body.append(bg);
+                                modal.querySelector('.modal_close_btn').addEventListener('click', function () {
+                                    bg.remove();
+                                    modal.style.display = 'none';
+                                });
+
+                                modal.setStyle({
+                                    position: 'fixed',
+                                    display: 'block',
+                                    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+
+
+                                    zIndex: zIndex + 1,
+
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    msTransform: 'translate(-50%, -50%)',
+                                    webkitTransform: 'translate(-50%, -50%)'
+                                });
+                            }
+
+
+                            Element.prototype.setStyle = function (styles) {
+                                for (var k in styles) this.style[k] = styles[k];
+                                return this;
+                            };
+
+                            document.getElementById('popup_open_btn').addEventListener('click', function () {
+
+                                modal('my_modal');
+                            });
+                        </script>
+                    </div>
                     <hr>
+                    <div class="photo"
+                         style="background-image: url('https://cdn.discordapp.com/attachments/595518052796465153/970288703006199818/pipe001.png');"></div>
+                </div>
+                <div class="icons">
                     <div>
-                        <img class="icon" src="/static/icons/emo.png"/>
-                        <textarea aria-label="댓글 달기..." data-testid="post-comment-text-area" placeholder="댓글 달기..."
-                                  class="PUqUI Ypffh" autocomplete="off" autocorrect="off"
-                                  style="height: 18px !important;"></textarea>
+                        <img class="icon" src="/static/icons/heart.png"/>
+                        <img class="icon" src="/static/icons/comment.png"/>
+                        <img class="icon" src="/static/icons/plane.png"/>
+                    </div>
+                    <div>
+                        <img class="icon" style="margin-right: 20px" src="/static/icons/save.png"/>
+                    </div>
+                </div>
+                <div class="comments">
+                    <div class="like-count">
+                        <div class="small-avatar avatar-image"></div>
+                        <p><span class="bold">A</span>님 외 <span class="bold">10명</span>이 좋아합니다</p>
+                    </div>
+                    <div><span class="bold">j_j__y</span> ㅎㅇ<input
+                            value="더보기"
+                            onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '숨기기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '더보기';}"
+                            type="button"
+                            class="card_view_more"
+                    />
+                        <div style="display: none" class="card_view">ㅎㅇ</div>
+                    </div>
+
+                    <p class="thin">1분전</p>
+
+                    <div class="feedCommentContainer">
+                        <img class="icon feed-emo" src="/static/icons/emo.png"/>
+                        <input class="feedComment" type="text" placeholder="댓글 달기...">
+                        <div class="follow thin blue-text">
+                            <span>게시</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="feed-container white-box">
+                <div class="feed">
+                    <div class="title">
+                        <div class="profile_photo">
+                            <div>
+                                <img src="https://cdn.discordapp.com/attachments/595518052796465153/970288703006199818/pipe001.png">
+                            </div>
+                            <p class="bold">j_j__y</p>
+                        </div>
+                        <img id="popup_open_btn" class="icon" style="margin-right: 10px" src="/static/icons/more.png"/>
+                        <div id="my_modal">
+                            <div class=>
+                                <p>
+                                    <button class="in_modal">신고</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">팔로우 취소</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">게시물로 이동</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">공유 대상...</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">링크 복사</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal">퍼가기</button>
+                                </p>
+                                <hr>
+                                <p>
+                                    <button class="in_modal modal_close_btn">취소</button>
+                                </p>
+                            </div>
+                        </div>
+                        <script>
+                            function modal(id) {
+                                var zIndex = 9999;
+                                var modal = document.getElementById(id);
+                                var bg = document.createElement('div');
+                                bg.setStyle({
+                                    position: 'fixed',
+                                    zIndex: zIndex,
+                                    left: '0px',
+                                    top: '0px',
+                                    width: '100%',
+                                    height: '100%',
+                                    overflow: 'auto',
+                                    backgroundColor: 'rgba(0,0,0,0.4)'
+                                });
+                                document.body.append(bg);
+                                modal.querySelector('.modal_close_btn').addEventListener('click', function () {
+                                    bg.remove();
+                                    modal.style.display = 'none';
+                                });
+
+                                modal.setStyle({
+                                    position: 'fixed',
+                                    display: 'block',
+                                    boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+
+
+                                    zIndex: zIndex + 1,
+
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    msTransform: 'translate(-50%, -50%)',
+                                    webkitTransform: 'translate(-50%, -50%)'
+                                });
+                            }
+
+
+                            Element.prototype.setStyle = function (styles) {
+                                for (var k in styles) this.style[k] = styles[k];
+                                return this;
+                            };
+
+                            document.getElementById('popup_open_btn').addEventListener('click', function () {
+
+                                modal('my_modal');
+                            });
+                        </script>
+                    </div>
+                    <hr>
+                    <div class="photo"
+                         style="background-image: url('https://cdn.discordapp.com/attachments/595518052796465153/970288703006199818/pipe001.png');"></div>
+                </div>
+                <div class="icons">
+                    <div>
+                        <img class="icon" src="/static/icons/heart.png"/>
+                        <img class="icon" src="/static/icons/comment.png"/>
+                        <img class="icon" src="/static/icons/plane.png"/>
+                    </div>
+                    <div>
+                        <img class="icon" style="margin-right: 20px" src="/static/icons/save.png"/>
+                    </div>
+                </div>
+                <div class="comments">
+                    <div class="like-count">
+                        <div class="small-avatar avatar-image"></div>
+                        <p><span class="bold">A</span>님 외 <span class="bold">10명</span>이 좋아합니다</p>
+                    </div>
+                    <div><span class="bold">j_j__y</span> ㅎㅇ<input
+                            value="더보기"
+                            onclick="if(this.parentNode.getElementsByTagName('div')[0].style.display != ''){this.parentNode.getElementsByTagName('div')[0].style.display = '';this.value = '숨기기';}else{this.parentNode.getElementsByTagName('div')[0].style.display = 'none'; this.value = '더보기';}"
+                            type="button"
+                            class="card_view_more"
+                    />
+                        <div style="display: none" class="card_view">ㅎㅇ</div>
+                    </div>
+
+                    <p class="thin">1분전</p>
+
+                    <div class="feedCommentContainer">
+                        <img class="icon feed-emo" src="/static/icons/emo.png"/>
+                        <input class="feedComment" type="text" placeholder="댓글 달기...">
+                        <div class="follow thin blue-text">
+                            <span>게시</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,7 +454,7 @@
         <div class="sub-page">
             <div class="account">
                 <div>
-                    <img width="80px" height="60px"
+                    <img width="120px" height="60px"
                          src="https://cdn.discordapp.com/attachments/595518052796465153/970288703006199818/pipe001.png">
                 </div>
                 <div class="id">
